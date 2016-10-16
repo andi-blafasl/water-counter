@@ -29,3 +29,11 @@ Arduino is in trigger mode upon start - Send __C__ to enter command mode
 ## Construction
 
 ![Construction](https://www.kompf.de/tech/images/watraspi.jpg)
+
+## Sync with meter
+
+A new database starts with 0 in the countervalue. To sync the database with the meter, just note the value (e.g 208.234) and use following command to update the RRD-File.
+
+    rrdtool update water.rrd N:175.448:0
+    
+After the Update, just restart wairc.py. It will read the saved meter value from the Database and continue counting.
